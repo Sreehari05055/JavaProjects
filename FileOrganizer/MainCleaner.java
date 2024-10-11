@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class MainCleaner{
+    // Driver class main method
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
@@ -16,3 +17,4 @@ public class MainCleaner{
 
     }
 }
+

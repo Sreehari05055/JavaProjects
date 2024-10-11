@@ -14,6 +14,7 @@ public class CleanMusic
     public String dldDir;
     File musicObj;
      File [] musicFiles;
+     //Class Constructor
     public CleanMusic(String holderName)
     {
         Holder(holderName.strip());

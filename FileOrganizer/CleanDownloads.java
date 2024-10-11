@@ -9,7 +9,7 @@ public class CleanDownloads {
     public String videoDir;
     File Obj;
      File [] files;
-
+    // Class Constructor
     public CleanDownloads(String holderName) {
 
         HolderName(holderName.strip());
