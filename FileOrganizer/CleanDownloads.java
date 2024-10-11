@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
-import java.util.Scanner;
 
 public class CleanDownloads {
     private String userFileName;
@@ -11,10 +10,8 @@ public class CleanDownloads {
     File Obj;
      File [] files;
 
-    public CleanDownloads() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter file holder name: ");
-        String holderName = scanner.nextLine();
+    public CleanDownloads(String holderName) {
+
         HolderName(holderName.strip());
         publicDir = "/Users/"+userFileName+"/Documents";
         audioDir = "/Users/"+userFileName+"/Music";
@@ -23,7 +20,7 @@ public class CleanDownloads {
 
         files = Obj.listFiles();
         FurtherProcessing(files);
-        System.out.println("Process Completed");
+
     }
     public void FurtherProcessing(File[] obj){
         if(obj != null){

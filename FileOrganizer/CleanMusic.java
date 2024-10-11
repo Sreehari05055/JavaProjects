@@ -4,7 +4,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Scanner;
 
 public class CleanMusic
 
@@ -15,11 +14,8 @@ public class CleanMusic
     public String dldDir;
     File musicObj;
      File [] musicFiles;
-    public CleanMusic()
+    public CleanMusic(String holderName)
     {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter file holder name: ");
-        String holderName = scanner.nextLine();
         Holder(holderName.strip());
         dldDir = "/Users/"+userName+"/Downloads";
         docDir = "/Users/"+userName+"/Documents";
