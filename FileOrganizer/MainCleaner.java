@@ -1,20 +1,32 @@
 import java.util.Scanner;
 
-public class MainCleaner{
-    // Driver class main method
-    public static void main(String[] args)
-    {
+/**
+ * The Driver class contains the main method to initiate the CleanMusic
+ * and CleanDownloads processes based on user input.
+ */
+public class MainCleaner {
+
+    /**
+     * The main method to run the application.
+     *
+     * @param args command-line arguments (not used)
+     */
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Ask for the username once
+        // Prompt for the username once
         System.out.print("Enter file holder name: ");
         String holderName = scanner.nextLine().strip();
 
-        // Pass the username to both classes
-         new CleanMusic(holderName);
-         new CleanDownloads(holderName);
+        // Initialize the CleanMusic and CleanDownloads classes with the username
+        new CleanMusic(holderName);
+        new CleanDownloads(holderName);
+
+        // Indicate the process is complete
         System.out.println("Process Completed");
 
+        // Close the scanner to prevent resource leaks
+        scanner.close();
     }
 }
 
