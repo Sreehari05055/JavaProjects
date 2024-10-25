@@ -1,9 +1,5 @@
 import java.io.File;
 import java.io.IOException;
-import java.nio.file.*;
-
-import java.io.File;
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -46,26 +42,31 @@ public class CleanDownloads {
      * @param obj the array of files to process
      */
     public void furtherProcessing(File[] obj) {
+        try{
         if (obj != null) {
             for (File file : obj) {
                 String fileName = file.getName().toLowerCase();
 
                 // Move audio files
-                if (fileName.endsWith(".mp3") || fileName.endsWith(".m4a")) {
+                if (fileName.endsWith(".mp3") || fileName.endsWith(".m4a") || fileName.endsWith(".aac") || fileName.endsWith(".wav")) {
                     moveFile(file, audioDir);
                 }
                 // Move video files
-                else if (fileName.endsWith(".mp4") || fileName.endsWith(".jpeg") || fileName.endsWith(".jpg")) {
+                else if (fileName.endsWith(".mp4") || fileName.endsWith(".jpeg") || fileName.endsWith(".jpg") || fileName.endsWith(".png")|| fileName.endsWith(".gif")) {
                     moveFile(file, videoDir);
                 }
                 // Move document files
                 else if (fileName.endsWith(".zip") || fileName.endsWith(".doc") ||
                         fileName.endsWith(".docx") || fileName.endsWith(".txt") ||
-                        fileName.endsWith(".pdf")) {
+                        fileName.endsWith(".pdf") || fileName.endsWith(".xls")
+                        || fileName.endsWith(".xlsx") || fileName.endsWith(".ppt")
+                        || fileName.endsWith(".pptx")) {
                     moveFile(file, publicDir);
                 }
             }
-        }
+        }}catch (Exception e) {
+            System.out.println("Error Transferring Files: "+e.getMessage());}
+
     }
 
     /**
@@ -75,7 +76,7 @@ public class CleanDownloads {
      * @param file    the file to move
      * @param dirPath the target directory path
      */
-    private void moveFile(File file, String dirPath) {
+    protected static void moveFile(File file, String dirPath) {
         Path targetDirPath = Paths.get(dirPath);
 
         try {

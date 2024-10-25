@@ -1,6 +1,4 @@
 import java.io.File;
-import java.io.IOException;
-import java.nio.file.*;
 
 /**
  * The CleanMusic class is responsible for organizing music files in a user's Music directory.
@@ -12,7 +10,7 @@ public class CleanMusic
     public String docDir;
     public String audDir;
     public String vidDir;
-    public String dldDir;
+    public String downloadsDir;
     File musicObj;
      File [] musicFiles;
     /**
@@ -24,7 +22,7 @@ public class CleanMusic
     public CleanMusic(String holderName)
     {
         Holder(holderName.strip());
-        dldDir = "/Users/"+userName+"/Downloads";
+        downloadsDir = "/Users/"+userName+"/Downloads";
         docDir = "/Users/"+userName+"/Documents";
         audDir = "/Users/"+userName+"/Downloads";
         vidDir = "/Users/"+userName+"/Pictures";
@@ -44,56 +42,42 @@ public class CleanMusic
     }
 
     /**
-     * Processes the music files, moving them to the appropriate directories based on their extensions.
+     * Processes the music dir files, moving them to the appropriate directories based on their extensions.
      *
      * @param obj2 the array of music files to process
      */
     public void FurtherProcess(File[] obj2) {
+       try{
         if (obj2 != null) {
             for (File file : obj2) {
-                //Path targetPDirPath;
+                String fileName = file.getName().toLowerCase();
 
-                // Check if the file is not a video or image
-                if (!file.getName().toLowerCase().endsWith(".mp4")
-                        && !file.getName().toLowerCase().endsWith(".jpeg")
-                        && !file.getName().toLowerCase().endsWith(".jpg")) {
-
-                    // Check if the file is a document or archive
-                    if (file.getName().toLowerCase().endsWith(".zip")
-                            || file.getName().toLowerCase().endsWith(".doc")
-                            || file.getName().toLowerCase().endsWith(".docx")
-                            || file.getName().toLowerCase().endsWith(".txt")
-                            || file.getName().toLowerCase().endsWith(".pdf")) {
-                        moveFileToDirectory(file, this.docDir);
+                // Check if the file is a document or archive
+                    if (fileName.endsWith(".zip") || fileName.endsWith(".doc") ||
+                            fileName.endsWith(".docx") || fileName.endsWith(".txt") ||
+                            fileName.endsWith(".pdf") || fileName.endsWith(".xls")
+                            || fileName.endsWith(".xlsx") || fileName.endsWith(".ppt")
+                            || fileName.endsWith(".pptx")) {
+                        CleanDownloads.moveFile(file, this.docDir);
                     }
-                } else {
-                    // Move video or image files to the video directory
-                    moveFileToDirectory(file, this.vidDir);
-                }
+                    // Move video and picture files
+                    else if (fileName.endsWith(".mp4") || fileName.endsWith(".jpeg") ||
+                            fileName.endsWith(".jpg") || fileName.endsWith(".png") ||
+                            fileName.endsWith(".gif")) {
+                        CleanDownloads.moveFile(file, this.vidDir);
+                    }
+                    // Move download files
+                    else if (fileName.endsWith(".dmg") || fileName.endsWith(".exe") ||
+                            fileName.endsWith(".bin") || fileName.endsWith(".sh") ||
+                            fileName.endsWith(".py") || fileName.endsWith(".json") ||
+                            fileName.endsWith(".xml") || fileName.endsWith(".yaml") ||
+                            fileName.endsWith(".html") || fileName.endsWith(".css") ||
+                            fileName.endsWith(".log") || fileName.endsWith(".js")) {
+                        CleanDownloads.moveFile(file, this.downloadsDir);
+                    }
             }
-        }
-    }
-
-    /**
-     * Moves a file to the specified directory, creating the directory if it doesn't exist.
-     *
-     * @param file    the file to move
-     * @param dirPath the target directory path as a string
-     */
-    private void moveFileToDirectory(File file, String dirPath) {
-        Path targetPDirPath = Paths.get(dirPath);
-
-        try {
-            // Check if the target directory exists; if not, create it
-            if (Files.notExists(targetPDirPath, new LinkOption[0])) {
-                Files.createDirectory(targetPDirPath);
-                System.out.println("Directory created: " + targetPDirPath);
-            }
-
-            // Move the file to the target directory
-            Files.move(file.toPath(), targetPDirPath.resolve(file.getName()), StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            System.err.println("Error moving file: " + e.getMessage());
-        }
+        }}catch (Exception e){
+           System.out.println("Error Transferring Files: "+e.getMessage());
+       }
     }
 }

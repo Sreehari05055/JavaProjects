@@ -18,9 +18,10 @@ public class MainCleaner {
         System.out.print("Enter file holder name: ");
         String holderName = scanner.nextLine().strip();
 
-        // Initialize the CleanMusic and CleanDownloads classes with the username
+        // Initialize the CleanMusic and CleanDownloads and CleanDocuments classes with the username
         new CleanMusic(holderName);
         new CleanDownloads(holderName);
+        new CleanDocuments(holderName);
 
         // Indicate the process is complete
         System.out.println("Process Completed");
