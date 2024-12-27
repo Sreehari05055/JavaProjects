@@ -3,7 +3,7 @@
 1) The program creates a window with:
 A text field for entering commands.
 A help button for user assistance.
-2)Users can enter commands in the text field and press Enter to perform actions such as:
+2) Users can enter commands in the text field and press Enter to perform actions such as:
 Drawing shapes.
 Changing colors.
 Saving the current state of the canvas.
