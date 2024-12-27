@@ -1,13 +1,13 @@
 # GraphicSystem.java 
 ## The following Java program is an academic project that implements a graphical user interface using the OOPGraphics library. 
-1) The program creates a window with:
+### 1) The program creates a window with:
 - A text field for entering commands.
 - A help button for user assistance.
-2) Users can enter commands in the text field and press Enter to perform actions such as:
+### 2) Users can enter commands in the text field and press Enter to perform actions such as:
 - Drawing shapes.
 - Changing colors.
 - Saving the current state of the canvas.
-3) The program requires the uk.ac.leedsbeckett.oop.OOPGraphics JAR file, which:
+### 3) The program requires the uk.ac.leedsbeckett.oop.OOPGraphics JAR file, which:
 - Provides the OOPGraphics class and its methods.
 - Enables creating and manipulating graphical objects.
 
