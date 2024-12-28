@@ -26,9 +26,14 @@ A simple file organizer program built with Java that sorts and moves files into 
 - **Documents (PDF, DOCX, PPT, DOC, ZIP, TXT, XLS, XLSX, PPTX)**: Moved to the "Documents" directory.
 - **Generic files (DMG, EXE, BIN, SH, PY, JSON, XML, YAML, HTML, CSS, LOG, JS)**: Moved to the "Downloads" directory.
 
+## Requirements
+
+- **Java 8+**: The program uses Java and the `java.nio.file` package for file manipulation.
+- **macOS**: The program is designed to check and organize files in the default macOS directories: Music, Downloads, and Documents.
+
 ## Installation
 
 1. Clone the repository
    ```bash
-   git clone
-2. Compile and run the program
+   git clone https://github.com/Sreehari05055/JavaProjects.git
+2. Compile and run MainCleaner.java
