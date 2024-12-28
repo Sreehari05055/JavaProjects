@@ -15,5 +15,20 @@
 The JAR file Is not part of the standard Java library.
 It Has been added to the repository and must be included in the classpath when compiling and running the program.
 
-# FileOrganizer 
-A personal project designed to organize the Documents, Downloads and Music directories for MacOS by accepting the user's name provided in Finder.
+# File Organizer
+
+A simple file organizer program built with Java that sorts and moves files into appropriate directories based on their type on macOS.
+
+## Features
+
+- **Video files (MP4, JPEG, JPG, PNG, GIF)**: Moved to the "Pictures" directory.
+- **Audio files (MP3, M4A, AAC, WAV)**: Moved to the "Music" directory.
+- **Documents (PDF, DOCX, PPT, DOC, ZIP, TXT, XLS, XLSX, PPTX)**: Moved to the "Documents" directory.
+- **Generic files (DMG, EXE, BIN, SH, PY, JSON, XML, YAML, HTML, CSS, LOG, JS)**: Moved to the "Downloads" directory.
+
+## Installation
+
+1. Clone the repository
+   ```bash
+   git clone
+2. Compile and run the program
